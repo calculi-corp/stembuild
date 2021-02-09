@@ -277,6 +277,11 @@ function Get-OSVersion {
             Write-Log "Found OS version: Windows 2012R2"
             "windows2012R2"
         }
+        elseif ($osVersion -match "10\.0\.14393\..+")
+        {
+            Write-Log "Found OS version: Windows 2016"
+            "windows2016"
+        }
         elseif ($osVersion -match "10\.0\.16299\..+")
         {
             Write-Log "Found OS version: Windows 1709"
