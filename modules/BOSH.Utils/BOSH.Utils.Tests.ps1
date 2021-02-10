@@ -306,6 +306,17 @@ Describe "Get-OSVersion" {
         Assert-MockCalled Get-OSVersionString -Times 1 -Scope It -ModuleName BOSH.Utils
     }
 
+    It "Correctly detects Windows 2016" {
+        Mock Get-OSVersionString { "10.0.14393.0" } -ModuleName BOSH.Utils
+        $actualOSVersion = $null
+
+        { Get-OSVersion | Set-Variable -Name "actualOSVersion" -Scope 1 } | Should -Not -Throw
+        $actualOsVersion | Should -eq "windows2016"
+
+        Assert-MockCalled Write-Log -Times 1 -Scope It -ParameterFilter { $Message -eq "Found OS version: Windows 1709" } -ModuleName BOSH.Utils
+        Assert-MockCalled Get-OSVersionString -Times 1 -Scope It -ModuleName BOSH.Utils
+    }
+
     It "Correctly detects Windows 1709" {
         Mock Get-OSVersionString { "10.0.16299.233" } -ModuleName BOSH.Utils
         $actualOSVersion = $null

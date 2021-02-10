@@ -307,7 +307,7 @@ function Validate-OSVersion
     try
     {
         $osVersion = Get-OSVersionString
-        if ($osVersion -match "10\.0\.17763\..+")
+        if ($osVersion -match "10\.0\.14393\..+")
         {
             Write-Log "Found correct OS version: Windows Server 2019"
         }
@@ -399,7 +399,7 @@ function Install-SecurityPoliciesAndRegistries
 {
     try
     {
-        $osVersion2019Regex = "10\.0\.17763\..+"
+        $osVersion2019Regex = "10\.0\.14393\..+"
         $osVersion = Get-OSVersionString
         Write-Log "osVersion: $osVersion"
         if ($osVersion -match $osVersion2019Regex) {
