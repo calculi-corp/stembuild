@@ -582,7 +582,7 @@ Describe "Validate-OSVersion" {
 
         $major2019 = 10
         $minor2019 = 0
-        $build2019 = 14393
+        $build2019 = 17763
         $revision2019 = "IGNORED_REVISION_VALUE"
     }
 
@@ -670,7 +670,7 @@ Describe "Install-SecurityPoliciesAndRegistries" {
     }
 
     It "executes the Set-InternetExplorerRegistries powershell cmdlet if the os verison is 2019" {
-        $osVersion2019 = "10.0.14393.0"
+        $osVersion2019 = "10.0.17763.0"
         Mock Set-InternetExplorerRegistries { }
         Mock Write-Log { }
         Mock Get-OSVersionString { $osVersion2019 }
@@ -694,7 +694,7 @@ Describe "Install-SecurityPoliciesAndRegistries" {
     }
 
     It "fails gracefully when Set-InternetExplorerRegistries powershell cmdlet fails" {
-        $osVersion2019 = "10.0.14393.0"
+        $osVersion2019 = "10.0.17763.0"
         Mock Get-OSVersionString { $osVersion2019 }
         Mock Set-InternetExplorerRegistries { throw "Something terrible happened while attempting to execute Set-InternetExplorerRegistries" }
         Mock Write-Log { }
